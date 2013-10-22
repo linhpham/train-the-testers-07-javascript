@@ -1,0 +1,19 @@
+.container {
+	display: table;
+}
+
+.heading {
+	display: table-row;
+	font-weight: bold;
+	background-color: #d3d3d3;
+}
+
+.row {
+	display: table-row;
+}
+
+.column {
+	display: table-cell;
+	padding: 7px;
+	border: 1px dotted black;
+}

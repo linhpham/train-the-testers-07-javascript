@@ -1,0 +1,78 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="example-05-ajax.css">
+	<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+	<script type="text/javascript">
+
+		function loadEmployeesData() {
+			var data = {
+				"employees": [
+					{ "firstName":"John" , "lastName":"Doe", "address": "1 La Trobe Street" }, 
+					{ "firstName":"Anna" , "lastName":"Smith", "address": "2 Lonsdale Street" }, 
+					{ "firstName":"Peter" , "lastName":"Jones", "address": "3 Bourke Street" }
+				]
+			};
+
+			outputToHtml(data);
+		}
+
+		// STEP 01 - XMLHttpRequest()
+		/*function loadNextPage() {
+			var xmlhttp=new XMLHttpRequest();
+            var data = "";
+			xmlhttp.onreadystatechange = function() {
+				//4: request finished and response is ready
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+                {
+                    data = JSON.parse(xmlhttp.responseText);
+                    outputToHtml(data);
+                }
+            };
+
+			xmlhttp.open("GET", "/page02.txt", true);
+			xmlhttp.send();
+		}*/
+
+		// STEP 02
+		function loadNextPage() {
+			$.ajax({
+				url: "/page02.txt",
+				dataType: "json",
+			}).done(function (data) {
+				outputToHtml(data);
+			});
+		}
+
+		function outputToHtml(data) {
+            $(".row").remove();
+
+			data.employees.forEach(function(employee) {
+				var employeeRow = $('<div class="row">').append('<div class="column">' + employee.firstName + '</div>');
+				employeeRow.append('<div class="column">' + employee.lastName + '</div>');
+				employeeRow.append('<div class="column">' + employee.address + '</div>');
+
+				$(".container").append(employeeRow);
+			});
+		}
+
+		$(document).ready(function () {
+			loadEmployeesData();
+		});
+		
+	</script>
+</head>
+<body>
+	<h1>All Employees</h1>
+	<div class="container">
+		<div class="heading">
+	    	<div class="column">First name</div>
+	    	<div class="column">Last name</div>
+	    	<div class="column">Address</div>
+	    </div>
+	</div>
+
+	<button type="button" onclick="loadNextPage()">Next</button>
+	
+</body>
+
+</html>

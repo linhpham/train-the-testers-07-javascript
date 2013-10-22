@@ -1,0 +1,41 @@
+<html>
+<head>
+	<script type="text/javascript">
+		
+		document.write("<h1 id='extraInfoHeading'>Extra Info</h1>");
+		document.write("<p id='extraInfoPara'>This paragraph is added by javascript</p>");
+
+		function updateTime() {
+			var d = new Date();
+			document.getElementById('currentTime').innerHTML = d.toString();
+		}
+
+		function deleteExtraInfo() {
+			var heading = document.getElementById('extraInfoHeading');
+			var para = document.getElementById('extraInfoPara');
+			//heading.parentNode.removeChild(heading);
+			//para.parentNode.removeChild(para);	
+
+			if (heading)  {
+				heading.parentNode.removeChild(heading);	
+			}
+
+			if (para) {
+				para.parentNode.removeChild(para);	
+			}
+		}
+	</script>
+</head>
+<body>
+	<h1>Greetings</h1>
+	<p>
+		Current time in Melbourne is: <span id="currentTime"></span><br/>
+		<button type="button" onclick="updateTime()">Click me to update</button>
+	</p>
+	<p>
+		<button type="button" onclick="deleteExtraInfo()">Click me to delete extra info</button>
+	</p>
+
+</body>
+
+</html>

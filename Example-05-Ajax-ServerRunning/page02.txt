@@ -1,0 +1,7 @@
+{
+	"employees": [
+		{ "firstName":"Ruby", "lastName":"Greenwood", "address": "83 Warren Avenue" }, 
+		{ "firstName":"Molly" , "lastName":"Henderson", "address": "91 Garden Place" }, 
+		{ "firstName":"Faith" , "lastName":"Kelly", "address": "61 South Street" }
+	]
+}

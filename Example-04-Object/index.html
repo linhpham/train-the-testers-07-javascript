@@ -1,0 +1,67 @@
+<html>
+<head>
+	<script type="text/javascript" src="../js-lib/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			var myObject = {
+				value: 2,
+
+			    increment: function () {
+			        this.value += 1;
+			    }
+			};
+
+			$("body").append("<p>Value: " + myObject.value + "</p>");
+			myObject.increment();
+			$("body").append("<p>Value: " + myObject.value + "</p>");
+
+			  //DYNAMIC
+			myObject.myName = 10;
+			$("body").append("<p>Other value: " + myObject.myName + "</p>"); 
+
+			myObject.decrement = function() {
+				this.value -= 1;
+				this.myName -= 1;
+				this.anyThingNew = 2;
+			}
+			myObject.decrement();
+			$("body").append("<p>Value: " + myObject.value + "</p>");
+					
+
+			  // OTHER WAY TO DEFINE OBJECT 
+			var Person = function(firstName, lastName) {
+				this.firstName = firstName;
+				this.lastName = lastName;
+			};
+			Person.prototype.getName = function() {
+				return this.firstName + " " + this.lastName;
+			};
+
+			var p1 = new Person("John", "Smith");
+			var p2 = new Person("Joe", "Williams");
+			$("body").append("<p>" + p1.getName() + " greets " + p2.getName() + "</p>");
+			
+
+
+			 // RETURN OBJECT DEFINITIONS
+			function createPerson(firstName, lastName) {
+				return {
+					getName: function() {
+						return firstName + " " + lastName;
+					}
+				}
+			}
+
+			var p3 = createPerson("Alice", "Jones");
+			var p4 = createPerson("Mike", "Thomas");
+			$("body").append("<p>" + p3.getName() + " greets " + p4.getName() + "</p>");
+			
+		});
+	</script>
+</head>
+<body>
+	
+
+</body>
+
+</html>
